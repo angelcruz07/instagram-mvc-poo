@@ -1,0 +1,19 @@
+{
+    "name": "kingdev/instagram-mvc",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Kingdev\\InstagramMvc\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "angelcruz07",
+            "email": "angelcruzsanchez126@gmail.com"
+        }
+    ],
+    "require": {
+        "bramus/router": "^1.6",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
