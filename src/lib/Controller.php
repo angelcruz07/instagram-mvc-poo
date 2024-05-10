@@ -15,21 +15,21 @@ class Controller {
         $this->view->render($name, $data);
     }
 
-    public function post(string $param){
+    protected function post(string $param){
         if(!isset($_POST[$param])){
             return NULL;
         }
         return $_POST[$param];
     }
     
-    public function get(string $param){
+    protected function get(string $param){
         if(!isset($_GET[$param])){
             return NULL;
         }
         return $_GET[$param];
     }
 
-    public function file(string $param){
+    protected function file(string $param){
         if(!isset($_FILES[$param])){
             return NULL;
         }
