@@ -1,11 +1,12 @@
 <?php 
 
-namespace KingDev\InstagramMvc\lib;
+namespace KingDev\Instagram\lib;
 
-use KingDev\InstagramMvc\lib\View;
+use KingDev\Instagram\lib\View;
 
 class Controller {
-    private $view;
+    private View $view;
+
     
     function __construct(){
         $this->view = new View();

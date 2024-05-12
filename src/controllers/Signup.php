@@ -1,37 +1,32 @@
 <?php 
 
-namespace KingDev\InstagramMvc\controllers;
+namespace KingDev\Instagram\controllers;
 
-use KingDev\InstagramMvc\lib\Controller;
-use KingDev\InstagramMvc\lib\UtilImages;
-use KingDev\InstagramMvc\models\User;
+use KingDev\Instagram\lib\Controller;
+use KingDev\Instagram\lib\UtilImages;
+use KingDev\Instagram\models\User;
 
-class Singup extends Controller{
+class Signup extends Controller{
 
-    public function __construct(){
+    function __construct()
+    {
         parent::__construct();
     }
 
+    
     public function register(){
         $username = $this->post('username');
         $password = $this->post('password');
         $profile = $this->file('profile');
 
-        if(!is_null($username) &&
-           !is_null($password) &&
-          !is_null($profile)
-          ){
-           
-            $pictureName= UtilImages::storeImage($profile);
+        if(!is_null($username) && !is_null($password) && !is_null($profile)){
+            $url = UtilImages::storeImage($profile);
             $user = new User($username, $password);
-            $user->setProfile($pictureName);
+            $user->setProfile($url);
             $user->save();
-            header('location: /instagram-mvc/login');
-        }else {
+            header('location: login');
+        }else{
             $this->render('errors/index');
         }
     }
-
 }
-
-

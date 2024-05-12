@@ -1,0 +1,11 @@
+[12-May-2024 19:46:47 UTC] Hello, errors!
+[12-May-2024 19:46:47 UTC] PHP Fatal error:  Uncaught Error: Class "KingDev\InstagramMvc\controllers\Login" not found in /home/kingdev/Documents/instagram-mvc/src/lib/routes.php:19
+Stack trace:
+#0 [internal function]: {closure}()
+#1 /home/kingdev/Documents/instagram-mvc/vendor/bramus/router/src/Bramus/Router/Router.php(458): call_user_func_array()
+#2 /home/kingdev/Documents/instagram-mvc/vendor/bramus/router/src/Bramus/Router/Router.php(440): Bramus\Router\Router->invoke()
+#3 /home/kingdev/Documents/instagram-mvc/vendor/bramus/router/src/Bramus/Router/Router.php(287): Bramus\Router\Router->handle()
+#4 /home/kingdev/Documents/instagram-mvc/src/lib/routes.php(65): Bramus\Router\Router->run()
+#5 /home/kingdev/Documents/instagram-mvc/index.php(16): require('...')
+#6 {main}
+  thrown in /home/kingdev/Documents/instagram-mvc/src/lib/routes.php on line 19

@@ -1,11 +1,10 @@
 <?php 
 
-namespace KingDev\InstagramMvc\models;
+namespace KingDev\Instagram\models;
 
-use KingDev\InstagramMvc\lib\Model;
+use KingDev\Instagram\lib\Model;
 use PDO;
 use PDOException;
-
 
 
 class User extends Model{
@@ -18,6 +17,7 @@ class User extends Model{
         private string $password,
     )
     {
+        parent::__construct();
         $this->post = [];
         $this->profile = '';
         $this->id =  -1;
@@ -45,6 +45,15 @@ class User extends Model{
 
     private function getHashedPassword(){
         return password_hash($this->password, PASSWORD_DEFAULT, ['cost' => 10]);
+    }
+
+    public static function exists($username){
+        $query = $this->prepare('SELECT * FROM users WHERE username = :username');
+        $query->execute([
+            'username' => $username
+        ]);
+        $user = $query->fetch(PDO::FETCH_ASSOC);
+        return $user;
     }
 
     public function getId($value){

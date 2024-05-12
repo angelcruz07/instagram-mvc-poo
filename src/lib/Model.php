@@ -1,6 +1,6 @@
 <?php 
 
-namespace KingDev\InstagramMvc\lib;
+namespace KingDev\Instagram\lib;
 
 
 class Model {

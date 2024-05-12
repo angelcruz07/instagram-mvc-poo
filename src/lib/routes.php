@@ -1,7 +1,9 @@
 <?php
 
-$router = new \Bramus\Router\Router();
+use KingDev\Instagram\controllers\Signup;
+use KingDev\Instagram\controllers\Login;
 
+$router = new \Bramus\Router\Router();
 session_start();
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../config/');
@@ -14,20 +16,24 @@ $router->get('/', function(){
 });
 
 $router->get('/login', function(){
-    echo 'Hola';
+    $controller = new Login;
+    $controller->render('login/index');
 });
 
 
 $router->post('/auth', function(){
-    echo 'About';
+    $controller = new Login;
+    $controller->auth('login/index');
 });
 
-$router->get('/signup', function(){
-    echo 'About';
+$router->get('/signup', function() { 
+    $controller = new Signup;
+    $controller->render('signup/index');
 });
 
 $router->post('/register', function(){
-    echo 'About';
+    $controller = new Signup;
+    $controller->register();
 });
 
 $router->get('/home', function(){
