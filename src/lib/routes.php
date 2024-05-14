@@ -1,7 +1,7 @@
 <?php
 
-use KingDev\Instagram\controllers\Signup;
-use KingDev\Instagram\controllers\Login;
+use Instagram\controllers\Signup;
+use Instagram\controllers\Login;
 
 $router = new \Bramus\Router\Router();
 session_start();
@@ -16,23 +16,23 @@ $router->get('/', function(){
 });
 
 $router->get('/login', function(){
-    $controller = new Login;
+    $controller = new Login();
     $controller->render('login/index');
 });
 
 
 $router->post('/auth', function(){
-    $controller = new Login;
+    $controller = new Login();
     $controller->auth('login/index');
 });
 
 $router->get('/signup', function() { 
-    $controller = new Signup;
+    $controller = new Signup();
     $controller->render('signup/index');
 });
 
 $router->post('/register', function(){
-    $controller = new Signup;
+    $controller = new Signup();
     $controller->register();
 });
 

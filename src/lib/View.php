@@ -1,6 +1,6 @@
 <?php 
 
-namespace KingDev\Instagram\lib;
+namespace Instagram\lib;
 
 
 class View {

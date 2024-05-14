@@ -1,8 +1,8 @@
 <?php 
 
-namespace KingDev\Instagram\lib;
+namespace Instagram\lib;
 
-use KingDev\Instagram\lib\View;
+use Instagram\lib\View;
 
 class Controller {
     private View $view;

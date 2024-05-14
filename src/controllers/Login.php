@@ -1,9 +1,9 @@
 <?php
 
-namespace KingDev\Instagram\controllers;
+namespace Instagram\controllers;
 
-use KingDev\Instagram\lib\Controller;
-use KingDev\Instagram\models\User;
+use Instagram\lib\Controller;
+use Instagram\models\User;
 
 
 class Login extends Controller{

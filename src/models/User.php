@@ -1,10 +1,11 @@
 <?php 
 
-namespace KingDev\Instagram\models;
+namespace Instagram\models;
 
-use KingDev\Instagram\lib\Model;
+use Instagram\lib\Model;
 use PDO;
 use PDOException;
+use Instagram\lib\Database;
 
 
 class User extends Model{
@@ -21,6 +22,27 @@ class User extends Model{
         $this->post = [];
         $this->profile = '';
         $this->id =  -1;
+    }
+
+    public static function exists($username){
+        $query = $this->prepare('SELECT * FROM users WHERE username = :username');
+        $query->execute([
+            'username' => $username
+        ]);
+        $user = $query->fetch(PDO::FETCH_ASSOC);
+        return $user;
+    }
+
+    private function getHashedPassword(){
+        return password_hash($this->password, PASSWORD_DEFAULT, ['cost' => 10]);
+    }
+
+    public function comparePasswords($current){
+        try{
+            return password_verify($current, $this->password);
+        }catch(PDOException $e){
+            return NULL;
+        }
     }
 
     public function save(){
@@ -42,18 +64,22 @@ class User extends Model{
             return false;
         }
     }
-
-    private function getHashedPassword(){
-        return password_hash($this->password, PASSWORD_DEFAULT, ['cost' => 10]);
-    }
-
-    public static function exists($username){
-        $query = $this->prepare('SELECT * FROM users WHERE username = :username');
-        $query->execute([
-            'username' => $username
-        ]);
-        $user = $query->fetch(PDO::FETCH_ASSOC);
-        return $user;
+ 
+    public static function get($username){
+        try{
+            $db = new Database();
+            $query = $db->connect()->prepare('SELECT * FROM users WHERE username = :username');
+            $query->execute([ 'username' => $username]);
+            $data = $query->fetch(PDO::FETCH_ASSOC);
+            error_log($data['username']);
+            error_log($data['password']);
+            $user = new User($data['username'], $data['password']);
+            $user->setId($data['user_id']);
+            $user->setProfile($data['profile']);
+            return $user;
+        }catch(PDOException $e){
+            return false;
+        }
     }
 
     public function getId($value){

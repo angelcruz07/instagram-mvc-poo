@@ -1,11 +1,11 @@
 <?php
 
 
-namespace KingDev\Instagram\lib;
+namespace Instagram\lib;
 
 use PDO;
 use PDOException;
-use KingDev\Instagram\config\Constants;
+use Instagram\config\Constants;
 
 class Database{
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace KingDev\Instagram\config;
+namespace Instagram\config;
 
 
 class Constants{
@@ -11,6 +11,6 @@ class Constants{
     static public string $PASSWORD = 'root';
     static public string $CHARSET = 'utf8mb4';
 }
-define('URL', 'http://localhost/instagram-mvc/');
+define('URL', 'http://localhost:8080/');
 
 ?>

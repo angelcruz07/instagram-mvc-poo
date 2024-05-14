@@ -1,10 +1,10 @@
 <?php 
 
-namespace KingDev\Instagram\controllers;
+namespace Instagram\controllers;
 
-use KingDev\Instagram\lib\Controller;
-use KingDev\Instagram\lib\UtilImages;
-use KingDev\Instagram\models\User;
+use Instagram\lib\Controller;
+use Instagram\lib\UtilImages;
+use Instagram\models\User;
 
 class Signup extends Controller{
 
@@ -30,3 +30,5 @@ class Signup extends Controller{
         }
     }
 }
+
+?>
