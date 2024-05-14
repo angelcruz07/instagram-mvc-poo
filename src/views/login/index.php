@@ -10,7 +10,7 @@
     <form action="/instragram-mvc/auth" method="POST">
         <input type="text" name='username'>
         <input type="text" name='password'>
-        <button>Loginn</button>
+        <button>Login</button>
     </form>
 </body>
 </html>

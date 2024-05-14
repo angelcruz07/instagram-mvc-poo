@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Instagram\lib;
 
 use PDO;
@@ -16,25 +15,25 @@ class Database{
     private $charset;
 
     public function __construct(){
-        $this->host = Constants::$HOST;
-        $this->db = Constants::$DB;
-        $this->user = Constants::$USER;
-        $this->password = Constants::$PASSWORD;
-        $this->charset = Constants::$CHARSET;
+        $this->host = 'localhost';
+        $this->db = 'instagram';
+        $this->user = 'root';
+        $this->password = '';
+        $this->charset = 'utf8mb4';
     }
 
     function connect(){
+        $connection = "mysql:host=" . $this->host . ";dbname=" . $this->db . ";charset=" . $this->charset;
+        $options = [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+        ];
+        
         try{
-            $connection = "mysql:host=" . $this->host . ";dbname=" . $this->db . ";charset=" . $this->charset;
-            $options = [
-                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_EMULATE_PREPARES   => false,
-            ];
-            
             $pdo = new PDO($connection, $this->user, $this->password, $options);
             return $pdo;
         }catch(PDOException $e){
-            print_r('Error connection: ' . $e->getMessage());
+            throw new PDOException($e->getMessage(), (int)$e->getCode());
         }
     }
 

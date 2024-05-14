@@ -2,9 +2,10 @@
 
 namespace Instagram\lib;
 
+class UtilImages{
 
-class UtilImages {
-    public static function storeImage(array $photo): string {
+    public static function storeImage($photo):string{
+
         $target_dir = "public/img/photos/";
         $extarr = explode('.',$photo["name"]);
         $filename = $extarr[sizeof($extarr)-2];
@@ -35,5 +36,6 @@ class UtilImages {
             }
         }
     }
-
 }
+
+?>

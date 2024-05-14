@@ -16,14 +16,15 @@ $router->get('/', function(){
 });
 
 $router->get('/login', function(){
-    $controller = new Login();
-    $controller->render('login/index');
+    // $controller = new Login();
+    // $controller->render('login/index');
+    echo 'login';
 });
 
-
 $router->post('/auth', function(){
-    $controller = new Login();
-    $controller->auth('login/index');
+    // $controller = new Login();
+    // $controller->auth('login/index');
+    echo 'login';
 });
 
 $router->get('/signup', function() { 

@@ -1,7 +1,6 @@
 <?php 
 
 namespace Instagram\models;
-
 use Instagram\lib\Model;
 use PDO;
 use PDOException;
@@ -47,24 +46,20 @@ class User extends Model{
 
     public function save(){
         try{
-            //TODO: validate username and password
             $hash = $this->getHashedPassword($this->password);
-            $query = $this->prepare('INSERT INTO users (username, password, profiles)
-                                     VALUES (:username, :password, :profile)');      
-
-             $query->execute([
-                    'username' => $this->username,
-                    'password' => $hash,
-                    'profile' => $this->profile
+            $query = $this->prepare('INSERT INTO users (username, password, profile) VALUES(:username, :password, :profile)');
+            $query->execute([
+                'username'  => $this->username, 
+                'password'  => $hash,
+                'profile'  => $this->profile,
                 ]);
-                return true;
-
+            return true;
         }catch(PDOException $e){
             error_log($e -> getMessage());
             return false;
         }
-    }
- 
+    } 
+
     public static function get($username){
         try{
             $db = new Database();

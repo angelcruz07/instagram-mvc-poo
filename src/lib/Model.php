@@ -1,7 +1,7 @@
 <?php 
 
 namespace Instagram\lib;
-
+use Instagram\lib\Database;
 
 class Model {
     private Database $db;

@@ -1,5 +1,4 @@
 <?php 
-
 namespace Instagram\controllers;
 
 use Instagram\lib\Controller;
